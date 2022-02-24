@@ -1,3 +1,3 @@
-import Posts from './posts'
+const Home = () => <div>Home</div>
 
-export default Posts
+export default Home
