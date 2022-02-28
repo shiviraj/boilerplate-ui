@@ -5,13 +5,9 @@ import Layout from '../common/components/Layout'
 import { Router } from 'next/router'
 import { onRouteChange } from '../utils/routing'
 import ToastWrapper from '../common/components/ToastWrapper'
-import API from '../API'
-import { Provider, useDispatch } from 'react-redux'
+import { Provider } from 'react-redux'
 import store from '../store'
-import { setUser } from '../modules/user/action'
 import { ThemeProvider } from '@mui/styles'
-import { setStorage } from '../utils/storage'
-import { StorageKeys } from '../constants/storage'
 import PopUpWrapper from '../common/components/PopUp'
 
 const MyApp = ({ Component, pageProps, ...rest }) => {
@@ -36,16 +32,16 @@ const MyApp = ({ Component, pageProps, ...rest }) => {
 }
 
 const WithValidatedProfile = ({ children }) => {
-  const dispatch = useDispatch()
-  useEffect(() => {
-    API.users.validateUser()
-      .then((user) => dispatch(setUser(user)))
-      .catch((error = {}) => {
-        if (error.token) {
-          setStorage(StorageKeys.DUMMY, error)
-        }
-      })
-  }, [])
+  // const dispatch = useDispatch()
+  // useEffect(() => {
+  //   API.users.validateUser()
+  //     .then((user) => dispatch(setUser(user)))
+  //     .catch((error = {}) => {
+  //       if (error.token) {
+  //         setStorage(StorageKeys.DUMMY, error)
+  //       }
+  //     })
+  // }, [])
   
   return <>{children}</>
 }

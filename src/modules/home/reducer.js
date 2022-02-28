@@ -1,20 +1,20 @@
-import {SET_POPUP} from './action'
+import { SET_POPUP } from './action'
 
-const {SET_SITE_DETAILS} = require('./action')
+const { SET_SITE_DETAILS } = require('./action')
 
 const initialState = {
-  title: 'Devsbone',
+  title: 'Uno',
   tagLine: '',
   developer: 'Shiviraj',
-  popUp: {open: false, message: ''}
+  popUp: { open: false, message: '' }
 }
 
 const siteReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_SITE_DETAILS:
-      return {...state, ...action.siteDetails}
+      return { ...state, ...action.siteDetails }
     case SET_POPUP:
-      return {...state, popUp: {open: action.value, message: action.message}}
+      return { ...state, popUp: { open: action.value, message: action.message } }
     default:
       return state
   }

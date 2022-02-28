@@ -4,10 +4,8 @@ import Header from './Header'
 import { ROUTES } from '../../config/routes'
 import { styled } from '@mui/styles'
 import Footer from './Footer'
-import useMedia from '../../hooks/useMedia'
 
-const Body = styled('div')(({ theme, mt }) => ({
-  marginTop: theme.spacing(mt),
+const Container = styled('div')(({ theme }) => ({
   flexGrow: 1,
   minHeight: '100vh',
   width: '100vw',
@@ -18,14 +16,13 @@ const Body = styled('div')(({ theme, mt }) => ({
 }))
 
 const Layout = ({ children }) => {
-  const media = useMedia()
   const router = useRouter()
   const { pathname } = router
-  return <>
+  return <Container>
     {pathname !== ROUTES.LOGIN && <Header />}
-    <Body mt={media.sm ? 5.5 : 0}>{children}</Body>
+    {children}
     <Footer />
-  </>
+  </Container>
 }
 
 export default Layout

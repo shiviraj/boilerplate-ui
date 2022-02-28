@@ -1,5 +1,4 @@
 const UNDEFINED = 'undefined'
-
 const storageLocation = () => 'localStorage'
 
 const setStorage = (key, value) => {

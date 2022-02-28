@@ -1,10 +1,10 @@
 import { BFF_URL } from '../config/config'
 import users from './modules/user'
-import oauth from './modules/oauth'
+import games from './modules/games'
 
 const API = {
-  users: users(BFF_URL),
-  oauth: oauth(BFF_URL)
+  users: users(`${BFF_URL}/api/users`),
+  games: games(`${BFF_URL}/api/games`)
 }
 
 export default API

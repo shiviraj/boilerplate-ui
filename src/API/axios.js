@@ -3,12 +3,12 @@ import { getStorage } from '../utils/storage'
 import { StorageKeys } from '../constants/storage'
 
 export const initHeaders = () => {
-  const { token, user = {} } = getStorage(StorageKeys.AUTH) || {}
-  const { token: dummyToken = '', user: dummyUser = {} } = getStorage(StorageKeys.DUMMY) || {}
+  const token = getStorage(StorageKeys.AUTH)
+  const user = getStorage(StorageKeys.USER)
   return {
     'Content-Type': 'application/json',
-    authorization: `Bearer ${token || dummyToken}`,
-    'x-reference-id': user.userId || dummyUser.userId || 'missing-reference-id'
+    authorization: `Bearer ${token}`,
+    'x-reference-id': user.userId || 'missing-reference-id'
   }
 }
 
